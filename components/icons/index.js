@@ -7,6 +7,9 @@ import Dashboard from './Dashboard'
 import Pages from './Pages'
 import Home from './Home'
 import Category from './Category'
+import Facebook from './Facebook'
+import Instagram from './Instagram'
+import Youtube from './Youtube'
 
 const appIcons = {
   Search,
@@ -17,6 +20,9 @@ const appIcons = {
   Dashboard,
   Pages,
   Home,
-  Category
+  Category,
+  Facebook,
+  Instagram,
+  Youtube
 };
 export default appIcons;
