@@ -83,9 +83,10 @@ export default function DahboardNavbar({ handleDrawerToggle }) {
           <FlexBox alignItems="center" gap={3}>
             <Link
               href={`/api/auth/signout`}
-              onClick={(e) => {
+              onClick={async (e) => {
                 e.preventDefault();
-                signOut();
+                await signOut();
+                window.location = '/'
               }}
             >
               <Button variant="contained" color="dark" >

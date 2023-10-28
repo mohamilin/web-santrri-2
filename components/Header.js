@@ -40,7 +40,7 @@ const StyledContainer = styled(Container)({
 
 const MENU = [
   { title: "Home", url: "/" },
-  { title: "Tentang Kami", url: "/" },
+  { title: "Tentang Kami", url: "/tentang-kami" },
   { title: "Info Kampus", url: "/" },
   { title: "Beasiswa", url: "/" },
   { title: "Jalur Masuk", url: "/" },
@@ -161,7 +161,7 @@ const Header = ({ className }) => {
           <Link href={"/"}>
             <Image
             width={210}
-            height={70}
+            height={55}
             src="/assets/logo-santrihub.png" alt="logo"
             />
           </Link>
