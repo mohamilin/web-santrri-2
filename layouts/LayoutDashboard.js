@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 import DahboardNavbar from "@/components/navbar/DahboardNavbar";
 import DashboardSidebar from "@/components/navbar/DahboardSidebar";
-import Login from "./page-sections/Login";
 import MobileNavigtion from "./MobileNavigtion";
 
 // styled components
@@ -39,13 +38,11 @@ export default function LayoutDashboard({ children }) {
 
   const handleMobileDrawerToggle = () =>
     setShowMobileSideBar((state) => (state ? 0 : 1));
-
-  useEffect(() => {
-    if (!session) {
-      router.push("/");
-    }
-  }, [router, session]);
  
+  
+  if(!session && status === 'unauthenticated') {
+    router.push('/')
+  }
 
   return (
     <>

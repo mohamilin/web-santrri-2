@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Sticky from "@/components/Sticky";
 import { useCallback, useState } from "react";
 import MobileNavigtion from "./MobileNavigtion";
+import Footer from "@/components/Footer";
 
 export default function Layout({
   children,
@@ -26,6 +27,7 @@ export default function Layout({
         {children}
       </div>
     <MobileNavigtion />
+    <Footer/>
     </>
   );
 }
