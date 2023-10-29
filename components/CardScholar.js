@@ -104,12 +104,12 @@ export default function CardScholar({ data }) {
           }}
         />
       </Box>
-      <Box sx={{p:0.5}}>
-        <Box sx={{display: 'flex', justifyContent: 'space-between', mb:-2}}>
+      <Box sx={{p:1.5}}>
+        <Box sx={{display: 'flex', justifyContent: 'space-between', mb:-2, color:'#0d47a1', fontWeight: 500}}>
           <p>Pendaftaran</p>
           <p>{data.mulai_pendaftaran}</p>
         </Box>
-        <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Box sx={{display: 'flex', justifyContent: 'space-between', color: 'red', fontWeight: 400}}>
           <p>Berakhir</p>
           <p>{data.akhir_pendaftaran}</p>
         </Box>
