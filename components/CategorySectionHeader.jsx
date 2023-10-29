@@ -25,7 +25,7 @@ const CategorySectionHeader = (props) => {
       {seeMoreLink && (
         <Link href={seeMoreLink}>
           <FlexBox alignItems="center" color="grey.600">
-            View all
+            Selengkapnya
             {settings.direction === "ltr" ? (
               <ArrowRight fontSize="small" color="inherit" />
             ) : (
