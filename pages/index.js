@@ -13,7 +13,6 @@ const Home = (props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const toggleDialog = () => setDialogOpen(!dialogOpen);
 
-  console.log(props.homepage)
   return (
     <>
       <Layout>
