@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, styled } from "@mui/material";
-import CardComponent from "@/components/Card";
+import CardComponent from "@/components/CardCampus";
 import { H5 } from "@/components/Typography";
 import Image from "next/image";
 import Link from "next/link";
