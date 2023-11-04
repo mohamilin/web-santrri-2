@@ -1,5 +1,5 @@
 import React from "react";
-import { H2, H4, Paragraph } from "@/components/Typography";
+import { H2, H4 } from "@/components/Typography";
 import { Box, Grid } from "@mui/material";
 import CardCampus from "@/components/CardCampus";
 import Link from "next/link";
@@ -14,7 +14,7 @@ export default function SectionListCampus({ campuses }) {
         {/* <Paragraph></Paragraph> */}
       </Box>
       <Grid container spacing={3}>
-        {campuses.map((i, index) => (
+        {campuses?.map((i, index) => (
           <Grid key={index} item md={3} sm={6} xs={12}>
             <CardCampus sx={{ p: "1rem" }}>
               <Link href={`/info-kampus/${i.slug}`}>
