@@ -51,13 +51,13 @@ export default function TopCampuses({campuses}) {
           {campuses.map((i, index) => (
             <Box key={index}>
               <CardCampus sx={{ p: "1rem" }}>
-                <Link href="/">
+                <Link href={`/info-kampus/${i.slug}`}>
                   <HoverBox borderRadius={"8px"} mb={1}>
                     <LazyImage
                       src={i.logo}
                       width={500}
                       height={500}
-                      alt={i.title + index}
+                      alt={"logo"}
                     />
                   </HoverBox>
                   <Box sx={{backgroundColor: '#ffb74d', opacity:10, p:0.5, borderRadius: 1, mb:1}}>

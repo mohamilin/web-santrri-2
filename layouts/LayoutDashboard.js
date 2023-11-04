@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, styled } from "@mui/material";
+import { Box, Button, styled } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import DahboardNavbar from "@/components/navbar/DahboardNavbar";
 import DashboardSidebar from "@/components/navbar/DahboardSidebar";
 import MobileNavigtion from "./MobileNavigtion";
+import Link from "next/link";
 
 // styled components
 const BodyWrapper = styled(Box)(({ theme, compact }) => ({
@@ -31,6 +32,7 @@ export default function LayoutDashboard({ children }) {
   const router = useRouter();
   const [sidebarCompact, setSidebarCompact] = useState(0);
   const [showMobileSideBar, setShowMobileSideBar] = useState(0);
+  const [roleId, setRoleId] = useState(1);
 
   const { data: session, status } = useSession();
   const handleCompactToggle = () =>
@@ -38,12 +40,30 @@ export default function LayoutDashboard({ children }) {
 
   const handleMobileDrawerToggle = () =>
     setShowMobileSideBar((state) => (state ? 0 : 1));
- 
-  
-  if(!session && status === 'unauthenticated') {
-    router.push('/')
+
+  if (!session && status === "unauthenticated") {
+    router.push("/");
   }
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setRoleId(user.user.role_id);
+  }, []);
+
+  if (roleId !== 1) {
+    return (
+      <>
+        <Box sx={{textAlign: 'center'}}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <p>Not Access</p>
+        </Box>
+        <Button variant="contained" color="primary">
+          <Link href="/">Go to Home</Link>
+        </Button>
+        </Box>
+      </>
+    );
+  }
   return (
     <>
       {session && status === "authenticated" && (

@@ -31,7 +31,7 @@ export default function Feature() {
           <Grid item xs={6} sm={3} md={3} key={index}>
             <Link href={i.link}>
               <CardFeature>
-                <Image width={46} height={46} alt={i.name} src={i.image} />
+                <Image width={46} height={46} alt={"logo"} src={i.image} />
                 <H5>{i.name}</H5>
               </CardFeature>
             </Link>
