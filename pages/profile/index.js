@@ -1,12 +1,11 @@
-import LayoutDashboard from '@/layouts/LayoutDashboard'
-import React from 'react'
+import React from "react";
+import LayoutDashboardUser from "@/layouts/LayoutDashboardUser";
 
-IndexProfile.getLayout = function getLayout(page) {
-    return <LayoutDashboard>{page}</LayoutDashboard>
-    
-}
 export default function IndexProfile() {
+
   return (
-    <div>IndexProfile</div>
-  )
+    <LayoutDashboardUser>
+      dsd
+    </LayoutDashboardUser>
+  );
 }
