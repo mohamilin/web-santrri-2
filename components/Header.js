@@ -62,7 +62,7 @@ const Header = ({ className }) => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    setRoleId(user.user.role_id);
+    setRoleId(user?.user?.role_id);
 
     if (session && !user) {
       let payload = {
