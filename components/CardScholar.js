@@ -1,5 +1,15 @@
 import { useCallback, useState } from "react";
-import { styled, Box, useTheme, Chip, Stack } from "@mui/material";
+import {
+  styled,
+  Box,
+  useTheme,
+  Chip,
+  Stack,
+  Typography,
+  Badge,
+  makeStyles,
+  Avatar,
+} from "@mui/material";
 import { FlexBetween } from "./flex-box";
 import { useSnackbar } from "notistack";
 import { useAppContext } from "@/helpers/contexts/AppContext";
@@ -85,35 +95,67 @@ const StyledChip = styled(Box)(({ theme }) => ({
   position: "absolute",
   background: theme.palette.primary.main,
 }));
+const useStyles = styled((theme) => ({
+  width: theme.spacing(8),
+  height: theme.spacing(8),
+  backgroundColor: theme.palette.primary.main,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "50%",
+  color: theme.palette.primary.contrastText,
+  fontSize: "24px",
+}));
 
 export default function CardScholar({ data }) {
+  // const classes = useStyles();
   const { palette } = useTheme();
   return (
     <StyledCard>
       <Link href={"/"}>
-      <Box sx={{ overflow: "hidden", position: "relative" }}>
-        <Image
-          src={data.logo}
-          width={500}
-          height={500}
-          alt="logo"
-          style={{
-            height: 190,
-            width: "100%",
-            objectFit: "contain",
-          }}
-        />
-      </Box>
-      <Box sx={{p:1.5}}>
-        <Box sx={{display: 'flex', justifyContent: 'space-between', mb:-2, color:'#0d47a1', fontWeight: 500}}>
-          <p>Pendaftaran</p>
-          <p>{data.mulai_pendaftaran}</p>
+        <Box sx={{ overflow: "hidden", position: "relative" }}>
+          <Image
+            src={data.logo}
+            width={500}
+            height={500}
+            alt="logo"
+            style={{
+              height: 190,
+              width: "100%",
+              objectFit: "contain",
+            }}
+          />
         </Box>
-        <Box sx={{display: 'flex', justifyContent: 'space-between', color: 'red', fontWeight: 400}}>
-          <p>Berakhir</p>
-          <p>{data.akhir_pendaftaran}</p>
+        <Box sx={{ p: 1.5 }}>
+          <Stack direction={"row"} spacing={1} sx={{ mb: -1, mt:-1.5 }}>
+            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
+            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
+            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
+          </Stack>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              mb: -4,
+              color: "#0d47a1",
+              fontWeight: 500,
+            }}
+          >
+            <p>Pendaftaran</p>
+            <p>{data.mulai_pendaftaran}</p>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              color: "red",
+              fontWeight: 400,
+            }}
+          >
+            <p>Berakhir</p>
+            <p>{data.akhir_pendaftaran}</p>
+          </Box>
         </Box>
-      </Box>
       </Link>
     </StyledCard>
   );

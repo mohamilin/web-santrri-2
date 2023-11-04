@@ -41,12 +41,10 @@ const StyledContainer = styled(Container)({
 const MENU = [
   { title: "Home", url: "/" },
   { title: "Tentang Kami", url: "/tentang-kami" },
-  { title: "Info Kampus", url: "/" },
+  { title: "Info Kampus", url: "/info-kampus" },
   { title: "Beasiswa", url: "/" },
   { title: "Jalur Masuk", url: "/" },
 ];
-
-
 
 const Header = ({ className }) => {
   const theme = useTheme();
@@ -55,6 +53,8 @@ const Header = ({ className }) => {
   const loading = status === "loading";
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [roleId, setRoleId] = useState();
+
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const downMd = useMediaQuery(theme.breakpoints.down(1150));
 
@@ -62,6 +62,8 @@ const Header = ({ className }) => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
+    setRoleId(user.user.role_id);
+
     if (session && !user) {
       let payload = {
         user_email: session?.user?.email,
@@ -123,11 +125,27 @@ const Header = ({ className }) => {
             {session?.user && (
               <>
                 <FlexBox gap={1.5} alignItems="center">
-                  <Link href={`/dashboard`} variant="outlined" color="primary">
-                    <Button variant="contained" color="secondary">
-                      Dashboard
-                    </Button>
-                  </Link>
+                  {roleId !== 1 ? (
+                    <Link
+                      href={`/profile`}
+                      variant="outlined"
+                      color="primary"
+                    >
+                      <Button variant="contained" color="secondary">
+                        Profil
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`/dashboard`}
+                      variant="outlined"
+                      color="primary"
+                    >
+                      <Button variant="contained" color="secondary">
+                        Dashboard
+                      </Button>
+                    </Link>
+                  )}
                   <Box>
                     <Link
                       href={`/api/auth/signout`}
@@ -160,9 +178,10 @@ const Header = ({ className }) => {
         <FlexBox mr={2} minWidth="170px" alignItems="center">
           <Link href={"/"}>
             <Image
-            width={210}
-            height={55}
-            src="/assets/logo-santrihub.png" alt="logo"
+              width={210}
+              height={55}
+              src="/assets/logo-santrihub.png"
+              alt="logo"
             />
           </Link>
         </FlexBox>
@@ -193,11 +212,27 @@ const Header = ({ className }) => {
                     </Link>
                   ))}
                   |
-                  <Link href={`/dashboard`} variant="outlined" color="primary">
-                    <Button variant="contained" color="secondary">
-                      Dashboard
-                    </Button>
-                  </Link>
+                  {roleId !== 1 ? (
+                    <Link
+                      href={`/profile`}
+                      variant="outlined"
+                      color="primary"
+                    >
+                      <Button variant="contained" color="secondary">
+                        Profil
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`/dashboard`}
+                      variant="outlined"
+                      color="primary"
+                    >
+                      <Button variant="contained" color="secondary">
+                        Dashboard
+                      </Button>
+                    </Link>
+                  )}
                   <Box>
                     <Link
                       href={`/api/auth/signout`}

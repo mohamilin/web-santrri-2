@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, Card } from "@mui/material";
 import NavLink from "../nav-link/NavLink";
 import { layoutConstant } from "@/utils/constants";
 
@@ -35,4 +35,14 @@ const iconStyle = {
   justifyContent: "center",
 };
 
-export { Wrapper, StyledNavLink,iconStyle };
+ const SearchResultCard = styled(Card)({
+  zIndex: 99,
+  top: "100%",
+  width: "100%",
+  position: "absolute",
+  paddingTop: "0.5rem",
+  paddingBottom: "0.5rem",
+});
+
+
+export { Wrapper, StyledNavLink,iconStyle, SearchResultCard};
