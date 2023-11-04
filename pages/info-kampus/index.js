@@ -71,7 +71,6 @@ export default function Index() {
     }
 
     const data = await apiCampuses.getCampusesByNameCategory(params);
-    console.log(data.result.data, "data.result.data");
     setResultList(data.result.data);
   };
 
