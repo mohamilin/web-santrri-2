@@ -1,10 +1,10 @@
-import { styled, Box, Stack } from "@mui/material";
+import { styled, Box, Stack, Card } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import { H4 } from "./Typography";
+import { H4, H5 } from "./Typography";
 
 // styled components
-const StyledCard = styled(Box)(({ theme }) => ({
+const StyledCard = styled(Card)(({ theme }) => ({
   height: "100%",
   margin: "auto",
   borderRadius: 0,
@@ -26,10 +26,10 @@ const StyledCard = styled(Box)(({ theme }) => ({
 export default function CardJalurMasuk({ data, campus }) {
   return (
     <StyledCard>
-      <Link href={"/"}>
+      <Link href={`/jalur-masuk/${data.slug}`}>
         <Box sx={{ overflow: "hidden", position: "relative" }}>
           <Image
-            src={campus.logo}
+            src={campus?.logo ?? '/assets/images/background-template-jalur-masuk.jpg'}
             width={500}
             height={500}
             alt="logo"
@@ -54,6 +54,7 @@ export default function CardJalurMasuk({ data, campus }) {
               {data.isOpen ? "Dibuka" : "Ditutup"}
             </H4>
           </Stack>
+          <H5 mt={2}>{data?.name}</H5>
           <Box
             sx={{
               display: "flex",
