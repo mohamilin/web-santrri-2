@@ -122,7 +122,7 @@ export default function Index() {
         </DropDownHandler>
       }
     >
-      { categories.map((item) => (
+      { categories?.map((item) => (
         <MenuItem key={item.value} onClick={handleCategoryChange(item)}>
           {item.title}
         </MenuItem>
@@ -203,7 +203,7 @@ export default function Index() {
 
               {resultList.length > 0 && (
                 <SearchResultCard elevation={2}>
-                  {resultList.map((item, index) => (
+                  {resultList?.map((item, index) => (
                     <Link href={`/beasiswa/${item.slug}`} key={index}>
                       <MenuItem key={index}>{item.name}</MenuItem>
                     </Link>

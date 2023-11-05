@@ -11,7 +11,7 @@ export default function SectionListScholar({ scholarships }) {
         {/* <Paragraph></Paragraph> */}
       </Box>
       <Grid container spacing={3}>
-        {scholarships.map((i, index) => (
+        {scholarships?.map((i, index) => (
           <Grid item xs={6} md={3} key={index}>
             <CardScholar data={i} />
           </Grid>

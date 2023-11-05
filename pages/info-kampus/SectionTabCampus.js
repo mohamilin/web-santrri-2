@@ -40,7 +40,7 @@ export default function SectionTabCampus({ campuse }) {
   };
 
   const renderList = (items) => {
-    return items.map((item) => (
+    return items?.map((item) => (
       <React.Fragment key={item.id}>
         <ListItem onClick={() => handleClick(item.id)}>
           <ListItemText
@@ -55,10 +55,10 @@ export default function SectionTabCampus({ campuse }) {
           {item.departements &&
             (open[item.id] ? <ExpandLess /> : <ExpandMore />)}
         </ListItem>
-        {item.departements && (
+        {item?.departements && (
           <Collapse in={open[item.id]} timeout="auto" unmountOnExit>
             <List component="div" disablePadding sx={{ color: "" }}>
-              {item.departements.map((i, index) => (
+              {item?.departements?.map((i, index) => (
                 <Typography key={index} mx={4} sx={{ mb: 1 }}>
                   {" "}
                   {index + 1}. {i.name}
@@ -97,7 +97,7 @@ export default function SectionTabCampus({ campuse }) {
         </TabPanel>
         <TabPanel value="3">
           <Grid container spacing={2}>
-            {campuse?.jalurMasuk.map((i, index) => (
+            {campuse?.jalurMasuk?.map((i, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <CardJalurMasuk data={i} campus={campuse?.campus} />
               </Grid>
@@ -106,7 +106,7 @@ export default function SectionTabCampus({ campuse }) {
         </TabPanel>
         <TabPanel value="4">
           <Grid container spacing={2}>
-            {campuse?.scholars.map((i, index) => (
+            {campuse?.scholars?.map((i, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <CardScholar data={i} />
               </Grid>
