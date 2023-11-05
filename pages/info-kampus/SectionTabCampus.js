@@ -84,7 +84,7 @@ export default function SectionTabCampus({ campuse }) {
         <TabPanel value="1">
           <Box>
             <H3>Deskripsi</H3>
-            <Paragraph my={2}>{campuse.campus.description}</Paragraph>
+            <Paragraph my={2}>{campuse?.campus.description}</Paragraph>
           </Box>
         </TabPanel>
         <TabPanel value="2">
@@ -97,16 +97,16 @@ export default function SectionTabCampus({ campuse }) {
         </TabPanel>
         <TabPanel value="3">
           <Grid container spacing={2}>
-            {campuse.jalurMasuk.map((i, index) => (
+            {campuse?.jalurMasuk.map((i, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <CardJalurMasuk data={i} campus={campuse.campus} />
+                <CardJalurMasuk data={i} campus={campuse?.campus} />
               </Grid>
             ))}
           </Grid>
         </TabPanel>
         <TabPanel value="4">
           <Grid container spacing={2}>
-            {campuse.scholars.map((i, index) => (
+            {campuse?.scholars.map((i, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <CardScholar data={i} />
               </Grid>
