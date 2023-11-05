@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import DahboardNavbar from "@/components/navbar/DahboardNavbar";
 import DashboardSidebar from "@/components/navbar/DahboardSidebar";
-import MobileNavigtion from "./MobileNavigtion";
+import MobileNavigtion from "./MobileNavigation";
 import Link from "next/link";
 
 // styled components
@@ -47,7 +47,9 @@ export default function LayoutDashboard({ children }) {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    setRoleId(user.user.role_id);
+    if(user) {
+      setRoleId(user?.user?.role_id);
+    }
   }, []);
 
   if (roleId !== 1) {

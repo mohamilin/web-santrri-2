@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Sticky from "@/components/Sticky";
 import { useCallback, useState } from "react";
-import MobileNavigtion from "./MobileNavigtion";
+import MobileNavigation from "./MobileNavigation";
 import Footer from "@/components/Footer";
 import { Box } from "@mui/material";
 
@@ -27,10 +27,10 @@ export default function Layout({
         {/* BODY CONTENT */}
         {children}
       </div>
-    <MobileNavigtion />
-    <Box>
-    <Footer/>
-    </Box>
+      <MobileNavigation />
+      <Box>
+        <Footer />
+      </Box>
     </>
   );
 }

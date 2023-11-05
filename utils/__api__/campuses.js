@@ -14,8 +14,17 @@ const getCampusesByNameCategory = async (params) => {
   );
   return response.data;
 };
+
+const getCampusesBySlug = async (params) => {
+  const response = await axios.get(
+    `${BASE_API}/api/kampus/${params?.slug}`
+  );
+  return response.data;
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getCampuses,
   getCampusesByNameCategory,
+  getCampusesBySlug
 };

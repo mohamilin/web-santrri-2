@@ -10,7 +10,7 @@ export default function SectionListCampus({ campuses }) {
   return (
     <Box my={1}>
       <Box mb={3}>
-        <H2>Semua Kampus</H2>
+        <H2>Semua Beasiswa</H2>
         {/* <Paragraph></Paragraph> */}
       </Box>
       <Grid container spacing={3}>

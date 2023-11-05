@@ -22,8 +22,10 @@ import TouchRipple from "@mui/material/ButtonBase";
 import { SearchResultCard } from "@/components/styled-components";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
-import SectionListCampus from "./SectionListCampus";
+import SectionListCampus from "../info-kampus/SectionListCampus";
 import apiCampuses from "@/utils/__api__/campuses";
+import { getScholars, getScholarsByName } from "@/utils/__api__/scholarships";
+import SectionListScholar from "./SectionListScholar";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "700" });
 
@@ -51,7 +53,7 @@ export default function Index() {
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [campuses, setCampuses] = useState([]);
+  const [scholarships, setScholarships] = useState([]);
 
   // HANDLE CHANGE THE CATEGORY
   const handleCategoryChange = (cat) => () => {
@@ -59,18 +61,14 @@ export default function Index() {
     setCategoryTitle(cat.title);
   };
 
-  const getCampuses = async (searchText, category) => {
+  const searchScholars = async (searchText, category=null) => {
     let params = {
       page: 1,
-      per_page: 1000,
+      per_page: 10000,
       name: searchText,
     };
 
-    if (category) {
-      params.category = category;
-    }
-
-    const data = await apiCampuses.getCampusesByNameCategory(params);
+    const data = await getScholarsByName(params);
     setResultList(data.result.data);
   };
 
@@ -78,8 +76,8 @@ export default function Index() {
     startTransition(() => {
       const value = e.target?.value;
       if (!value) setResultList([]);
-      else if (value && category !== "all") getCampuses(value, category);
-      else getCampuses(value);
+      else if (value && category !== "all") searchScholars(value, category);
+      else searchScholars(value);
     });
   };
   const handleDocumentClick = () => setResultList([]);
@@ -94,11 +92,11 @@ export default function Index() {
       per_page: PER_PAGE,
     };
     setLoadingLoadMore(true);
-    apiCampuses.getCampuses(params).then((res) => {
+    getScholars(params).then((res) => {
       setLoading(false);
       setLoadingLoadMore(false);
       setTotalPages(Math.ceil(res.result.total / PER_PAGE));
-      setCampuses([...campuses, ...res.result.data]);
+      setScholarships([...scholarships, ...res.result.data]);
     });
   }, [page]);
 
@@ -124,7 +122,7 @@ export default function Index() {
         </DropDownHandler>
       }
     >
-      {categories.map((item) => (
+      { categories.map((item) => (
         <MenuItem key={item.value} onClick={handleCategoryChange(item)}>
           {item.title}
         </MenuItem>
@@ -140,7 +138,7 @@ export default function Index() {
             sx={{
               my: 2,
               textAlign: "center",
-              backgroundColor: "#00acc1",
+              backgroundColor: "#2962ff",
               borderRadius: 1,
               height: 130,
             }}
@@ -151,7 +149,7 @@ export default function Index() {
                 className={roboto.className}
                 sx={{ pt: 3, fontWeight: 700, fontSize: 40 }}
               >
-                Kampus
+                Beasiswa
               </Typography>
             </Box>
             <Stack
@@ -167,7 +165,7 @@ export default function Index() {
                   Home
                 </Link>
                 <Link underline="hover" color="inherit" href="#">
-                  Info Kampus
+                  Beasiswa
                 </Link>
               </Breadcrumbs>
             </Stack>
@@ -185,7 +183,7 @@ export default function Index() {
               <TextField
                 fullWidth
                 variant="outlined"
-                placeholder="Cari Nama Kampus atau Kota"
+                placeholder="Cari Nama Beasiswa"
                 onChange={handleSearch}
                 InputProps={{
                   sx: {
@@ -198,7 +196,7 @@ export default function Index() {
                       borderColor: "primary.main",
                     },
                   },
-                  endAdornment: categoryDropdown,
+                  // endAdornment: categoryDropdown,
                   startAdornment: <SearchOutlined fontSize="small" />,
                 }}
               />
@@ -206,7 +204,7 @@ export default function Index() {
               {resultList.length > 0 && (
                 <SearchResultCard elevation={2}>
                   {resultList.map((item, index) => (
-                    <Link href={`/info-kampus/${item.slug}`} key={index}>
+                    <Link href={`/beasiswa/${item.slug}`} key={index}>
                       <MenuItem key={index}>{item.name}</MenuItem>
                     </Link>
                   ))}
@@ -219,7 +217,7 @@ export default function Index() {
               </Box>
             ) : (
               <Box sx={{ mt: { md: 4 } }}>
-                <SectionListCampus campuses={campuses} />
+                <SectionListScholar scholarships={scholarships} />
                 <Box mt={6} mb={5} display="flex" justifyContent="center">
                   {totalPages !== page && (
                     <Button
@@ -241,28 +239,28 @@ export default function Index() {
 }
 
 const categories = [
-  {
-    title: "Semua Kategori",
-    value: "all",
-  },
-  {
-    title: "PTN",
-    value: "Perguruan Tinggi Negeri",
-  },
-  {
-    title: "PTKIN",
-    value: "Perguruan Tinggi Keagamaan Islam Negeri",
-  },
-  {
-    title: "PTS",
-    value: "Perguruan Tinggi Swasta",
-  },
-  {
-    title: "PTK",
-    value: "Peguruan Tinggi Kedinasan",
-  },
-  {
-    title: "POLTEK",
-    value: "Politeknik Negeri",
-  },
+  // {
+  //   title: "Semua Kategori",
+  //   value: "all",
+  // },
+  // {
+  //   title: "PTN",
+  //   value: "Perguruan Tinggi Negeri",
+  // },
+  // {
+  //   title: "PTKIN",
+  //   value: "Perguruan Tinggi Keagamaan Islam Negeri",
+  // },
+  // {
+  //   title: "PTS",
+  //   value: "Perguruan Tinggi Swasta",
+  // },
+  // {
+  //   title: "PTK",
+  //   value: "Peguruan Tinggi Kedinasan",
+  // },
+  // {
+  //   title: "POLTEK",
+  //   value: "Politeknik Negeri",
+  // },
 ];

@@ -53,10 +53,10 @@ const GridItemOne = styled(Grid)(({ theme }) => ({
   },
 }));
 const StyledButton = styled(Button)(({ theme }) => ({
-  color: "#fff",
+  color: "black",
   fontWeight: 400,
   fontSize: "14px",
-  background: theme.palette.info.main,
+  background: theme.palette.info[500],
   "&:hover": {
     background: theme.palette.success[400],
   },

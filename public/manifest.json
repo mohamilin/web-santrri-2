@@ -1,0 +1,31 @@
+{
+    "name": "Santri Hub",
+    "short_name": "Santri Hub",
+    "description": "A Progressive Web App built with Santri Hub",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#17a2b8",
+    "background_color": "#17a2b8",
+    "icons": [
+      {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      },
+      {
+          "src": "/icon-256x256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+      },
+      {
+          "src": "/icon-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png"
+      },
+      {
+          "src": "/icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+    ]
+  }
