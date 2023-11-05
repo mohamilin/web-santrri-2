@@ -42,8 +42,8 @@ const MENU = [
   { title: "Home", url: "/" },
   { title: "Tentang Kami", url: "/tentang-kami" },
   { title: "Info Kampus", url: "/info-kampus" },
-  { title: "Beasiswa", url: "/" },
-  { title: "Jalur Masuk", url: "/" },
+  { title: "Beasiswa", url: "/beasiswa" },
+  { title: "Jalur Masuk", url: "/jalur-masuk" },
 ];
 
 const Header = ({ className }) => {
@@ -61,18 +61,23 @@ const Header = ({ className }) => {
   const toggleDialog = () => setDialogOpen(!dialogOpen);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    setRoleId(user?.user?.role_id);
+    let user = localStorage.getItem("user");
+    if(user) {
+      user = JSON.parse(user)
+      setRoleId(user?.user?.role_id);
+    }
 
     if (session && !user) {
+      console.log('SINI', {session, user})
       let payload = {
-        user_email: session?.user?.email,
-        user_name: session?.user?.name,
+        email :session?.user?.email,
+        full_name :session?.user?.name,
       };
       api
         .login(payload)
         .then((res) => {
-          localStorage.setItem("user", JSON.stringify(res.results));
+          console.log(res.data, 'resres')
+          localStorage.setItem("user", JSON.stringify(res.data));
         })
         .catch((e) => {
           console.log(e, "error");

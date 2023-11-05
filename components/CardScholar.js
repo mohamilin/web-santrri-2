@@ -1,21 +1,7 @@
-import { useCallback, useState } from "react";
-import {
-  styled,
-  Box,
-  useTheme,
-  Chip,
-  Stack,
-  Typography,
-  Badge,
-  makeStyles,
-  Avatar,
-} from "@mui/material";
-import { FlexBetween } from "./flex-box";
-import { useSnackbar } from "notistack";
-import { useAppContext } from "@/helpers/contexts/AppContext";
+import { styled, Box, Stack, Avatar } from "@mui/material";
 import Link from "next/link";
-import LazyImage from "./LazyImage";
 import Image from "next/image";
+import { H2, H4 } from "./Typography";
 
 // styled components
 const StyledCard = styled(Box)(({ theme }) => ({
@@ -36,83 +22,11 @@ const StyledCard = styled(Box)(({ theme }) => ({
     },
   },
 }));
-const ImgBox = styled(Box)(({ theme }) => ({
-  overflow: "hidden",
-  position: "relative",
-  // padding: "0 40px 20px 40px",
-  background: theme.palette.primary[100],
-  // height: 190,
-}));
-
-const ItemController = styled(FlexBetween)(({ theme }) => ({
-  width: 35,
-  right: 15,
-  height: 120,
-  bottom: -120,
-  background: "#fff",
-  overflow: "hidden",
-  position: "absolute",
-  flexDirection: "column",
-  transition: "bottom 0.3s ease-in-out",
-  "& span": {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    padding: "8px 10px",
-    alignItems: "center",
-    justifyContent: "center",
-    "&:hover": {
-      cursor: "pointer",
-      background: theme.palette.primary.main,
-      "& svg": {
-        color: "#fff",
-      },
-    },
-  },
-  "& svg": {
-    fontSize: 18,
-    color: theme.palette.grey[600],
-  },
-}));
-const ContentWrapper = styled(Box)({
-  padding: "1rem",
-  "& .title, & .categories": {
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-  },
-});
-const StyledChip = styled(Box)(({ theme }) => ({
-  zIndex: 11,
-  width: 100,
-  top: "16px",
-  left: "0px",
-  paddingLeft: 3,
-  paddingRight: 3,
-  borderRadius: 0,
-  fontWeight: 600,
-  fontSize: "20px",
-  position: "absolute",
-  background: theme.palette.primary.main,
-}));
-const useStyles = styled((theme) => ({
-  width: theme.spacing(8),
-  height: theme.spacing(8),
-  backgroundColor: theme.palette.primary.main,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  borderRadius: "50%",
-  color: theme.palette.primary.contrastText,
-  fontSize: "24px",
-}));
 
 export default function CardScholar({ data }) {
-  // const classes = useStyles();
-  const { palette } = useTheme();
   return (
     <StyledCard>
-      <Link href={"/"}>
+      <Link href={`/beasiswa/${data.slug}`}>
         <Box sx={{ overflow: "hidden", position: "relative" }}>
           <Image
             src={data.logo}
@@ -127,11 +41,59 @@ export default function CardScholar({ data }) {
           />
         </Box>
         <Box sx={{ p: 1.5 }}>
-          <Stack direction={"row"} spacing={1} sx={{ mb: -1, mt:-1.5 }}>
-            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
-            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
-            <Avatar sx={{backgroundColor: '#00897b', width: 25, height: 25, p:1, fontWeight: 100, fontSize: '12px'}} className={""}>S1</Avatar>
+          <Stack direction={"row"} spacing={1} sx={{ mb: -1, mt: -1.5 }}>
+            {data.strata_1 && (
+              <Avatar
+                sx={{
+                  backgroundColor: "#00897b",
+                  width: 25,
+                  height: 25,
+                  p: 1,
+                  fontWeight: 100,
+                  fontSize: "12px",
+                }}
+                className={""}
+              >
+                S1
+              </Avatar>
+            )}
+
+            {data.strata_2 && (
+              <Avatar
+                sx={{
+                  backgroundColor: "#00897b",
+                  width: 25,
+                  height: 25,
+                  p: 1,
+                  fontWeight: 100,
+                  fontSize: "12px",
+                }}
+                className={""}
+              >
+                S2
+              </Avatar>
+            )}
+
+            {data.strata_3 && (
+              <Avatar
+                sx={{
+                  backgroundColor: "#00897b",
+                  width: 25,
+                  height: 25,
+                  p: 1,
+                  fontWeight: 100,
+                  fontSize: "12px",
+                }}
+                className={""}
+              >
+                S3
+              </Avatar>
+            )}
           </Stack>
+          {!data.strata_3 && !data.strata_2 && !data.strata_1 ? (
+            <Box sx={{ p: 1, mt: 1 }} />
+          ) : null}
+          <H4 mt={3}>{data.name}</H4>
           <Box
             sx={{
               display: "flex",
