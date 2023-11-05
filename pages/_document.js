@@ -9,8 +9,20 @@ export default function MyDocument({ emotionStyleTags }) {
   return (
     <Html lang="en" className={openSans.className}>
       <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="emotion-insertion-point" content="" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
+        <meta name="theme-color" content="#000" />
+
+        <link
+          rel="icon"
+          href="https://santrihub.or.id/wp-content/uploads/2022/06/cropped-Logo-Santri-Hub-1BIRU-bulat-192x192.png"
+        />
+        <link
+          rel="shortcut icon"
+          href="https://santrihub.or.id/wp-content/uploads/2022/06/cropped-Logo-Santri-Hub-1BIRU-bulat-192x192.png"
+        />
+
         {emotionStyleTags}
       </Head>
 
