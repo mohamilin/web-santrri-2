@@ -23,9 +23,9 @@ import { SearchResultCard } from "@/components/styled-components";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
 import SectionListCampus from "../info-kampus/SectionListCampus";
-import apiCampuses from "@/utils/__api__/campuses";
 import { getScholars, getScholarsByName } from "@/utils/__api__/scholarships";
-import SectionListScholar from "./SectionListScholar";
+import SectionListJalurMasuk from "./SectionListJalurMasuk";
+import { getJalurMasuk, getJalurMasukByName } from "@/utils/__api__/jalurMasuk";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "700" });
 
@@ -53,7 +53,7 @@ export default function Index() {
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [scholarships, setScholarships] = useState([]);
+  const [jalurMasuk, setJalurMasuk] = useState([]);
 
   // HANDLE CHANGE THE CATEGORY
   // const handleCategoryChange = (cat) => () => {
@@ -61,14 +61,14 @@ export default function Index() {
   //   setCategoryTitle(cat.title);
   // };
 
-  const searchScholars = async (searchText, category=null) => {
+  const searchJalurMasuk = async (searchText, category=null) => {
     let params = {
       page: 1,
       per_page: 10000,
       name: searchText,
     };
 
-    const data = await getScholarsByName(params);
+    const data = await getJalurMasukByName(params);
     setResultList(data.result.data);
   };
 
@@ -76,8 +76,8 @@ export default function Index() {
     startTransition(() => {
       const value = e.target?.value;
       if (!value) setResultList([]);
-      else if (value && category !== "all") searchScholars(value, category);
-      else searchScholars(value);
+      else if (value && category !== "all") searchJalurMasuk(value, category);
+      else searchJalurMasuk(value);
     });
   };
   const handleDocumentClick = () => setResultList([]);
@@ -92,11 +92,11 @@ export default function Index() {
       per_page: PER_PAGE,
     };
     setLoadingLoadMore(true);
-    getScholars(params).then((res) => {
+    getJalurMasuk(params).then((res) => {
       setLoading(false);
       setLoadingLoadMore(false);
       setTotalPages(Math.ceil(res.result.total / PER_PAGE));
-      setScholarships([...scholarships, ...res.result.data]);
+      setJalurMasuk([...jalurMasuk, ...res.result.data]);
     });
   }, [page]);
 
@@ -138,7 +138,7 @@ export default function Index() {
             sx={{
               my: 2,
               textAlign: "center",
-              backgroundColor: "#2962ff",
+              backgroundColor: "#5e35b1",
               borderRadius: 1,
               height: 130,
             }}
@@ -149,7 +149,7 @@ export default function Index() {
                 className={roboto.className}
                 sx={{ pt: 3, fontWeight: 700, fontSize: 40 }}
               >
-                Beasiswa
+                Jalur Masuk
               </Typography>
             </Box>
             <Stack
@@ -165,7 +165,7 @@ export default function Index() {
                   Home
                 </Link>
                 <Link underline="hover" color="inherit" href="#">
-                  Beasiswa
+                Jalur Masuk
                 </Link>
               </Breadcrumbs>
             </Stack>
@@ -183,7 +183,7 @@ export default function Index() {
               <TextField
                 fullWidth
                 variant="outlined"
-                placeholder="Cari Nama Beasiswa"
+                placeholder="Cari Nama Jalur Masuk"
                 onChange={handleSearch}
                 InputProps={{
                   sx: {
@@ -204,7 +204,7 @@ export default function Index() {
               {resultList.length > 0 && (
                 <SearchResultCard elevation={2}>
                   {resultList?.map((item, index) => (
-                    <Link href={`/beasiswa/${item.slug}`} key={index}>
+                    <Link href={`/jalur-masuk/${item.slug}`} key={index}>
                       <MenuItem key={index}>{item.name}</MenuItem>
                     </Link>
                   ))}
@@ -217,7 +217,7 @@ export default function Index() {
               </Box>
             ) : (
               <Box sx={{ mt: { md: 4 } }}>
-                <SectionListScholar scholarships={scholarships} />
+                <SectionListJalurMasuk jalurMasuk={jalurMasuk} />
                 <Box mt={6} mb={5} display="flex" justifyContent="center">
                   {totalPages !== page && (
                     <Button
