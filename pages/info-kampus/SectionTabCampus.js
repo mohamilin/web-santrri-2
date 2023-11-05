@@ -31,7 +31,7 @@ export default function SectionTabCampus({ campuse }) {
   };
 
   const [open, setOpen] = React.useState({});
-  const [faculties, setFaculties] = React.useState(campuse.faculty);
+  const [faculties, setFaculties] = React.useState(campuse?.faculty);
   const handleClick = (id) => {
     setOpen((prevState) => ({
       ...prevState,
