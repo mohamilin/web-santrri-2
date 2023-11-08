@@ -23,6 +23,7 @@ const TAB = [
   { value: "3", label: "Jalur Masuk" },
   { value: "4", label: "Beasiswa" },
 ];
+
 export default function SectionTabCampus({ campuse }) {
   const [value, setValue] = React.useState("1");
 
@@ -90,21 +91,30 @@ export default function SectionTabCampus({ campuse }) {
         <TabPanel value="2">
           <Box>
             <H3>Fakultas dan Jurusan</H3>
-            <List component="nav" aria-labelledby="nested-list-subheader">
+            <List
+              sx={{ ml: -2 }}
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+            >
               {renderList(faculties)}
             </List>
           </Box>
         </TabPanel>
         <TabPanel value="3">
-          <Grid container spacing={2}>
-            {campuse?.jalurMasuk?.map((i, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <CardJalurMasuk data={i} campus={campuse?.campus} />
-              </Grid>
-            ))}
-          </Grid>
+          <Box>
+            <H3 sx={{mb:3}}>Jalur Masuk</H3>
+            <Grid container spacing={2}>
+              {campuse?.jalurMasuk?.map((i, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <CardJalurMasuk data={i} campus={campuse?.campus} />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </TabPanel>
         <TabPanel value="4">
+          <Box>
+          <H3 sx={{mb:2}}>Beasiswa</H3>
           <Grid container spacing={2}>
             {campuse?.scholars?.map((i, index) => (
               <Grid item xs={12} md={4} key={index}>
@@ -112,39 +122,9 @@ export default function SectionTabCampus({ campuse }) {
               </Grid>
             ))}
           </Grid>
+          </Box>
         </TabPanel>
       </TabContext>
     </Box>
   );
 }
-
-const dataDumy = [
-  {
-    id: 1,
-    title: "Item 1",
-    children: [
-      {
-        id: 2,
-        title: "Subitem 1",
-      },
-      {
-        id: 3,
-        title: "Subitem 2",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Item 2",
-    children: [
-      {
-        id: 2,
-        title: "Subitem 1",
-      },
-      {
-        id: 3,
-        title: "Subitem 2",
-      },
-    ],
-  },
-];

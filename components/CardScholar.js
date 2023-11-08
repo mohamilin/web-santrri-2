@@ -1,7 +1,7 @@
 import { styled, Box, Stack, Avatar } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import { H2, H4 } from "./Typography";
+import { H4 } from "./Typography";
 
 // styled components
 const StyledCard = styled(Box)(({ theme }) => ({

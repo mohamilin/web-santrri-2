@@ -95,9 +95,9 @@ export default function Slug() {
                     >
                       <CardMedia
                         component="img"
-                        image="https://app.santrihub.or.id/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fsantrihub%2Fimage%2Fupload%2Fv1684570077%2Fsantrihub_campuses%2Frfnjmuomufir7mmhxqek.png&w=128&q=75"
+                        image={campuse?.campus?.logo}
                         sx={{
-                          width: "200%",
+                          width: "100%",
                           height: "100%",
                           objectFit: "cover",
                         }}

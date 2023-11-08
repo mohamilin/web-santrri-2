@@ -20,13 +20,13 @@ export default function Layout({
         <Header isFixed={isFixed} />
       </Sticky>
 
-      <div className="section-after-sticky">
+      <Box className="section-after-sticky" sx={{backgroundColor:  ''}}>
         {/* NAVIGATION BAR */}
         {/* {showNavbar && <Navbar elevation={0} border={1} />} */}
 
         {/* BODY CONTENT */}
         {children}
-      </div>
+      </Box>
       <MobileNavigation />
       <Box>
         <Footer />

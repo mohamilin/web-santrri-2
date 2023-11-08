@@ -16,14 +16,10 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-import SantrhubMenu from "@/components/SantrihubMenu";
 import { FlexBox } from "@/components/flex-box";
-import TouchRipple from "@mui/material/ButtonBase";
 import { SearchResultCard } from "@/components/styled-components";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
-import SectionListCampus from "../info-kampus/SectionListCampus";
-import { getScholars, getScholarsByName } from "@/utils/__api__/scholarships";
 import SectionListJalurMasuk from "./SectionListJalurMasuk";
 import { getJalurMasuk, getJalurMasukByName } from "@/utils/__api__/jalurMasuk";
 
