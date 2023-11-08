@@ -101,7 +101,7 @@ export default function Slug() {
                         }}
                       >
                         <H6>Jenjang</H6>
-                        <Stack direction={"row"} spacing={1}>
+                        <Stack direction={"row"} spacing={0.5}>
                           {jalurMasuk?.diploma && (
                             <Box
                               sx={{
@@ -125,7 +125,7 @@ export default function Slug() {
                                 backgroundColor: "#00897b",
                                 width: 25,
                                 height: 25,
-                                p: 1,
+                                p: 2,
                                 fontWeight: 100,
                                 fontSize: "12px",
                               }}
@@ -140,7 +140,7 @@ export default function Slug() {
                                 backgroundColor: "#00897b",
                                 width: 25,
                                 height: 25,
-                                p: 1,
+                                p: 2,
                                 fontWeight: 100,
                                 fontSize: "12px",
                               }}
@@ -155,7 +155,7 @@ export default function Slug() {
                                 backgroundColor: "#00897b",
                                 width: 25,
                                 height: 25,
-                                p: 1,
+                                p: 2,
                                 fontWeight: 100,
                                 fontSize: "12px",
                               }}
