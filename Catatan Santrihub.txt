@@ -1,0 +1,14 @@
+Catatan :
+
+1. Buat flow dengan https://whimsical.com/santrihub-abc-RrasECPd5KhxJooN13w7xW
+2. Design dr tim UI/UX untuk ? homepage => desktop responsive => spt kitalulus.com
+3. Patnership dengan PTS => muncul di homepag (website)
+4. Patnership dengan Perusahaan => CSR beasiswa
+5. Patnership dengan Perusahaan => Iklan
+6. Patnership dengan Pesantren => Pendaftaran dan Iklan 
+7. Patnership dengan Komunitas => Input data komunitas dan Event => by prioritas, notifikasi
+8. Patnership dengan Penyelenggara Beasiswa => Input data (ada akses bwt penyelenggara) 
+9. CV Generate
+
+branding nama website / app => 
+	edukasihub.id => kampus (sama kyak santrihub), beasiswa (sama kyak santrihub), komunitas (sama kyak santrihub), event, forum
