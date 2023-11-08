@@ -1,10 +1,11 @@
-import React from 'react'
-import LayoutDashboardUser from '@/layouts/LayoutDashboardUser'
+import React from "react";
+import LayoutProfile from "@/layouts/LayoutProfile";
+import { Box } from "@mui/material";
 
 export default function Index() {
   return (
-    <LayoutDashboardUser>
-        ha
-    </LayoutDashboardUser>
-  )
+    <LayoutProfile title="Program">
+      <Box p={3}>Coming Soon</Box>
+    </LayoutProfile>
+  );
 }
